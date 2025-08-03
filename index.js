@@ -15,6 +15,9 @@ app.use((req, res, next) => {
     next(new Error("Route not found", 404));
 });
 app.use(errorHandler)
+app.get("/", (req, res) => {
+  res.json({ success: true, message: "Grad Tracker API is running" });
+});
 
 app.listen(process.env.PORT, () => {
     console.log('Server started on port 3000');
