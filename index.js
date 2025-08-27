@@ -4,6 +4,7 @@ import connectDB from './db/connection.js';
 import errorHandler from './utils/ErrorHandler.js';
 import userRoutes from './routes/auth.js';
 import CustomError from './utils/Error.js';
+import Userrouter from './routes/user.js';
 
 dotenv.config();
 const app = express();
@@ -11,7 +12,7 @@ connectDB();
 app.use(express.json());
 app.use("/auth",userRoutes)
 
-
+app.use('/user',Userrouter)
 app.use(errorHandler)
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Grad Tracker API is running" });
